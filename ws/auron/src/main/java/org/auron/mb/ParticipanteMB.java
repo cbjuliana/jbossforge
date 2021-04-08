@@ -1,8 +1,10 @@
 package org.auron.mb;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.auron.dao.ParticipanteDAO;
 import org.auron.entity.Participante;
 
 @Named
@@ -10,9 +12,13 @@ import org.auron.entity.Participante;
 public class ParticipanteMB {
 
     private Participante participante = new Participante();
+    
+    @Inject
+    private ParticipanteDAO participanteDao;
+
 
     public void cadastrar() {
-        System.out.println(participante.getNome());
+    	participanteDao.inserir(participante);
     }
 
 	public Participante getParticipante() {
